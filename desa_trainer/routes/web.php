@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DESAController;
 use App\Http\Controllers\InstructionsController;
 use App\Http\Middleware\checkRole;
+use App\Http\Middleware\checkRoleExamen;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SimulatorController;
 
@@ -17,6 +18,10 @@ Route::get('/', function () {
     return redirect()->route('index');
 });
 
+Route::middleware(['auth', 'verified', checkRoleExamen::class])->prefix('examen')->group(function () {
+    Route::get('/examen/{scenarioId}',[ScenarioController::class, 'show'])->name('examen.show');
+
+});
 // Rutas para el panel de control
 Route::middleware(['auth', 'verified', checkRole::class])->prefix('admin')->group(function () {
     // Dashboard

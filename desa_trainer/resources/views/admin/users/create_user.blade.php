@@ -109,6 +109,7 @@
                     <option value="student">Alumno</option>
                     <option value="teacher">Profesor</option>
                     <option value="admin">Administrador</option>
+                    <option value="admin">examen</option>
                 </select>
             </div>
 
